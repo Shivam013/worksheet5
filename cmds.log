@@ -1,0 +1,8 @@
+     1    script ws5.txt
+     2    mkdir CUSTOMERS
+     3    awk -F "\t" '{print $2}' amazon_reviews_us_Books_v1_02.tsv | sort | uniq -c | sort -nr | head -n 1000 | awk -F " " '{print $2}' > top1000
+     4    cat top1000 | while read line ; do grep -h $line amazon_reviews_us_Books_v1_02.tsv > CUSTOMERS/$line.txt ; done
+     5    ls
+     6    ls CUSTOMERS\
+     7    ls CUSTOMERS\ | wc -l
+     8    history > cmds.log
