@@ -1,11 +1,24 @@
 Script started on 2022-10-07 02:56:18-04:00
-]0;shivam@sjsu:~/worksheet5[shivam@sjsu worksheet5]$ mkdir CUSTOMERS
-]0;shivam@sjsu:~/worksheet5[shivam@sjsu worksheet5]$ awk -F "\t" '{print $2}' amazon_reviews_us_Books_v1_02.tsv | sort | uniq -c | sort -nr | head --n 1000 | awk -F " " '{print $2}' > top1000
-]0;shivam@sjsu:~/worksheet5[shivam@sjsu worksheet5]$ cat top1000 | while read line ; do grep -h $line amazon_reviews_us_Books_v1_02.tsv > CUSTOMERS//$line.txt ;
+-------------------------------------------------------------------------------------------------------------------------------
+Create customers dir
+-------------------------------------------------------------------------------------------------------------------------------
+shivam@sjsu:~/worksheet5[shivam@sjsu worksheet5]$ mkdir CUSTOMERS
+-------------------------------------------------------------------------------------------------------------------------------
+Separate Top 1000
+-------------------------------------------------------------------------------------------------------------------------------
+shivam@sjsu:~/worksheet5[shivam@sjsu worksheet5]$ awk -F "\t" '{print $2}' amazon_reviews_us_Books_v1_02.tsv | sort | uniq -c | sort -nr | head --n 1000 | awk -F " " '{print $2}' > top1000
+-------------------------------------------------------------------------------------------------------------------------------
+Run while loop on top 1000
+-------------------------------------------------------------------------------------------------------------------------------
+shivam@sjsu:~/worksheet5[shivam@sjsu worksheet5]$ cat top1000 | while read line ; do grep -h $line amazon_reviews_us_Books_v1_02.tsv > CUSTOMERS//$line.txt ;
 >  done
-]0;shivam@sjsu:~/worksheet5[shivam@sjsu worksheet5]$ ls
-amazon_reviews_us_Books_v1_02.tsv  [0m[38;5;33mCUSTOMERS[0m  top1000  ws5.txt
-]0;shivam@sjsu:~/worksheet5[shivam@sjsu worksheet5]$ ls CUSTOMERS/
+-------------------------------------------------------------------------------------------------------------------------------
+Check files
+-------------------------------------------------------------------------------------------------------------------------------
+shivam@sjsu:~/worksheet5[shivam@sjsu worksheet5]$ ls
+amazon_reviews_us_Books_v1_02.tsv  CUSTOMERS  top1000  ws5.txt
+
+shivam@sjsu:~/worksheet5[shivam@sjsu worksheet5]$ ls CUSTOMERS/
 12598621.txt  37010568.txt  43996206.txt  49273674.txt  50462706.txt  51210331.txt  52340667.txt  52808271.txt
 13197618.txt  37015883.txt  44020425.txt  49276628.txt  50491732.txt  51210590.txt  52357858.txt  52809057.txt
 13993962.txt  37304756.txt  44184384.txt  49286822.txt  50510246.txt  51212167.txt  52362855.txt  52812751.txt
@@ -131,8 +144,13 @@ amazon_reviews_us_Books_v1_02.tsv  [0m[38;5;33mCUSTOMERS[0m  top1000  ws5.txt
 36886659.txt  43879637.txt  49256646.txt  50429811.txt  51199159.txt  52317033.txt  52797417.txt  53092736.txt
 36949740.txt  43932718.txt  49257001.txt  50452306.txt  51205644.txt  52317431.txt  52797744.txt  53093124.txt
 36987473.txt  43985534.txt  49263512.txt  50455329.txt  51209967.txt  52332498.txt  52801489.txt  53095832.txt
-]0;shivam@sjsu:~/worksheet5[shivam@sjsu worksheet5]$ wc -l [K[K[K[K[K[Kls [CCUSTOMERS/ | wc -c[Kl
+
+-------------------------------------------------------------------------------------------------------------------------------
+Check file count in CUSTOMERS folder
+-------------------------------------------------------------------------------------------------------------------------------
+shivam@sjsu:~/worksheet5[shivam@sjsu worksheet5]$ wc -l ls CUSTOMERS/ | wc -cl
 1000
-]0;shivam@sjsu:~/worksheet5[shivam@sjsu worksheet5]$ exit
+shivam@sjsu:~/worksheet5[shivam@sjsu worksheet5]$ exit
 
 Script done on 2022-10-07 03:06:30-04:00
+
